@@ -3,7 +3,7 @@ import { Excalidraw } from "@excalidraw/excalidraw";
 
 const Draw = () => {
   return (
-    <div style={{ height: "60vh", border: '1px solid black', margin: '0px 10px 0px 10px' }}>
+    <div style={{ height: "60vh", border: '1px solid black', margin: '0px 10px 0px 10px', width: '90%' }}>
       <Excalidraw />
     </div>
   )

@@ -8,7 +8,7 @@ const NavBar = () => {
   const [open, setOpen] = useState(false)
 
   return(
-    <Box sx={{flexGrow: 1, margin: '15px', border: '3px solid black', borderRadius: '5px'}}>
+    <Box sx={{flexGrow: 1, margin: '15px', border: '3px solid black', borderRadius: '5px', width: '90%'}}>
       <AppBar position='static' sx={{backgroundColor: 'rgb(30, 52, 105)'}}>
         <Toolbar> 
           <Typography variant="h3" sx={{ flexGrow: 1, color: 'white'}}>

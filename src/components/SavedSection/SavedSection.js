@@ -2,7 +2,7 @@ import React from 'react'
 
 const SavedSection = () => {
   return(
-    <div style={{border: '3px solid blue', marginTop: '15px', width: '90vw'}}>
+    <div style={{border: '3px solid blue', marginTop: '15px', width: '90%'}}>
       Saved Section
     </div>
   )
