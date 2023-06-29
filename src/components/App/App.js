@@ -12,9 +12,24 @@ import { useLocation } from 'react-router-dom';
 function App() {
   let location = useLocation()
   const [users, setUsers] = useState([{id: 1, fileName: 'user643'}])
+  const [folderResults, setFolderResults] = useState([])
 
   const createNewUser = (newUser) => {
     setUsers([...users, newUser])
+  }
+
+  const searchFolders = (search) => {
+    const filteredSearch = users?.filter(user => user.fileName.toLowerCase().match(search.toLowerCase()))
+    setFolderResults(filteredSearch)
+    // if(filteredSearch.length > 0) {
+    //   setFolderResults('')
+    // } else {
+    //   setFolderResults('Sorry no users found by that filename. Please adjust your search.')
+    // }
+  }
+
+  const resetSearch = () => {
+    setFolderResults([])
   }
 
   return (
@@ -27,7 +42,7 @@ function App() {
         <Draw />
         {/* <SavedSection /> */}
       </div>}/>
-      <Route path='/dashboard' element={<Dashboard createNewUser={createNewUser} users={users}/>}/>
+      <Route path='/dashboard' element={<Dashboard createNewUser={createNewUser} users={users} searchFolders={searchFolders} folderResults={folderResults} resetSearch={resetSearch}/>}/>
     </Routes>
     </div>
   );

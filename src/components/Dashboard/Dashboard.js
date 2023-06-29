@@ -4,8 +4,18 @@ import UserFolder from '../UserFolder/UserFolder'
 import NewFolderModal from '../NewFolderModal/NewFolderModal'
 import SearchForm from '../SearchForm/SearchForm'
 
-const Dashboard = ({ createNewUser, users }) => {
+const Dashboard = ({ createNewUser, users, searchFolders, folderResults, resetSearch }) => {
   const displayFolders = users.map(user => {
+    return(
+      <UserFolder 
+        key={user.id}
+        id={user.id}
+        fileName={user.fileName}
+      />
+    )
+  })
+
+  const displayFolderResults = folderResults?.map(user => {
     return(
       <UserFolder 
         key={user.id}
@@ -19,10 +29,10 @@ const Dashboard = ({ createNewUser, users }) => {
     <Box>
       <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
         <NewFolderModal createNewUser={createNewUser}/>
-        <SearchForm users={users}/>
+        <SearchForm users={users} resetSearch={resetSearch} folderResults={folderResults} searchFolders={searchFolders}/>
       </Box>
       <Box sx={{display: 'flex', width: '75vw', height: '75vh', flexWrap: 'wrap'}}>
-        {users && displayFolders}
+        {folderResults.length > 0 ? displayFolderResults : displayFolders}
       </Box>
     </Box>
   )
