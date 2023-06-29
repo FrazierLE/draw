@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import './App.css';
 import Draw from '../Draw/Draw';
 import NavBar from '../NavBar/NavBar';
@@ -10,6 +11,7 @@ import { useLocation } from 'react-router-dom';
 
 function App() {
   let location = useLocation()
+  const [users, setUsers] = useState([{id: 1, fileName: 'user643'}])
 
   return (
     <div className="App" style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
