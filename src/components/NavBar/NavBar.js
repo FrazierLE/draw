@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { AppBar, Box, IconButton, Toolbar, Button, Typography, MenuList, MenuItem } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
+import { NavLink } from 'react-router-dom';
 
 
 const NavBar = () => {
@@ -30,9 +31,9 @@ const NavBar = () => {
         <Box sx={{display: 'flex', justifyContent:'flex-end', border: '1px solid'}}>
           <MenuList sx={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
             <Button onClick={() => setOpen(false)} sx={{width:'5vw'}}><CloseIcon variant='contained' /></Button>
-            <MenuItem>DigiStrip</MenuItem>
-            <MenuItem>User Dashboard</MenuItem>
-            <MenuItem>Logout</MenuItem>
+            <NavLink to='/digistrip' style={{textDecoration: 'none'}}><MenuItem>DigiStrip</MenuItem></NavLink>
+            <NavLink to='/dashboard' style={{textDecoration: 'none'}}><MenuItem>User Dashboard</MenuItem></NavLink>
+            <NavLink to='/' style={{textDecoration: 'none'}}><MenuItem>Logout</MenuItem></NavLink>
           </MenuList>
         </Box>
         }
