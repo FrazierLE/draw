@@ -14,12 +14,30 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  display: 'flex', 
+  flexDirection: 'column'
 };
 
-const NewFolderModal = () => {
+const NewFolderModal = ({ createNewUser }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [fileName, setfileName] = useState('')
+
+  const addNewUser = (e) => {
+    e.preventDefault()
+    const newUser = {
+      id: Date.now(),
+      fileName: fileName
+    }
+    setOpen(false)
+    createNewUser(newUser)
+    clearInput()
+  }
+
+  const clearInput = () => {
+    setfileName('')
+  }
 
   return (
     <div>
@@ -46,8 +64,9 @@ const NewFolderModal = () => {
             id="input-with-icon-caseName"
             label="Case Name"
             type='text'
-            // value={username}
-            // onChange={e => setUsername(e.target.value)}
+            name='fileName'
+            value={fileName}
+            onChange={e => setfileName(e.target.value)}
             sx={{margin: '10px'}}
             InputProps={{
             startAdornment: (
@@ -57,7 +76,7 @@ const NewFolderModal = () => {
             ),}}
             variant="outlined"
             />
-            <Button><PersonAddAltIcon />Create</Button>
+            <Button onClick={e => addNewUser(e)}><PersonAddAltIcon />Create</Button>
           </Box>
         </Fade>
       </Modal>

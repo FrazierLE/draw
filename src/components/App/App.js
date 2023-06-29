@@ -13,6 +13,10 @@ function App() {
   let location = useLocation()
   const [users, setUsers] = useState([{id: 1, fileName: 'user643'}])
 
+  const createNewUser = (newUser) => {
+    setUsers([...users, newUser])
+  }
+
   return (
     <div className="App" style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
     {location.pathname !== '/' && <NavBar />}
@@ -23,7 +27,7 @@ function App() {
         <Draw />
         {/* <SavedSection /> */}
       </div>}/>
-      <Route path='/dashboard' element={<Dashboard />}/>
+      <Route path='/dashboard' element={<Dashboard createNewUser={createNewUser} users={users}/>}/>
     </Routes>
     </div>
   );
