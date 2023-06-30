@@ -27,6 +27,26 @@ const NewCaseModal = () => {
   const handleClose = () => setOpen(false);
   const [attorney, setAttorney] = useState()
   const [client, setClient] = useState()
+  const [digistrip, setDigistrip] = useState()
+
+  const addNewCase = (e) => {
+    e.preventDefault()
+    const newCase = {
+      id: Date.now(),
+      attorney: attorney,
+      client: client,
+      digistrip: digistrip
+
+    }
+    setOpen(false)
+    // createNewCase(newCase)
+    clearInput()
+  }
+
+  const clearInput = () => {
+    setAttorney('')
+    setClient('')
+  }
 
   return (
     <div>
