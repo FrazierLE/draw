@@ -7,7 +7,7 @@ import Case from '../Case/Case';
 const UserFolder = ({ id, fileName }) => {
   return(
     <div>
-      <NavLink to={`/dashboard/${id}`} >
+      <NavLink to={`/dashboard/${id}`} style={{textDecoration: 'none', cursor: 'pointer'}}>
         <Card sx={{height: '20vh', width: '15vw', margin: '15px', display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
           <FolderIcon sx={{fontSize: '48px'}}/>
           <Typography variant='h6'>{fileName}</Typography>
