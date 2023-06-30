@@ -6,6 +6,7 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import UploadIcon from '@mui/icons-material/Upload';
 import CreateIcon from '@mui/icons-material/Create';
+import { NavLink } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -102,7 +103,7 @@ const NewCaseModal = () => {
             variant="outlined"
             />
             <Box sx={{display: 'flex', justifyContent: 'center'}}>
-              <Button>< CreateIcon/>Create DigiStrip</Button>
+              {/* <NavLink to='/digistrip' style={{ textDecoration: 'none' }}><Button><CreateIcon/>Create DigiStrip</Button></NavLink> */}
               <Button>< UploadIcon />Upload DigiStrip</Button>
             </Box>
             <Button><PersonAddAltIcon />Create</Button>
