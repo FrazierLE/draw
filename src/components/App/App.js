@@ -7,11 +7,12 @@ import SavedSection from '../SavedSection/SavedSection';
 import Dashboard from '../Dashboard/Dashboard';
 import { Route, Routes } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import UserCases from '../UserCases/UserCases';
 
 
 function App() {
   let location = useLocation()
-  const [users, setUsers] = useState([{id: 1, fileName: 'user643'}])
+  const [users, setUsers] = useState([{id: 1, fileName: 'user643', cases: [{id: 1, attorney: 'Samantha Poon', client: 'Hannah Burgstein', digistrip: ''}]}])
   const [folderResults, setFolderResults] = useState([])
 
   const createNewUser = (newUser) => {
@@ -43,6 +44,7 @@ function App() {
         {/* <SavedSection /> */}
       </div>}/>
       <Route path='/dashboard' element={<Dashboard createNewUser={createNewUser} users={users} searchFolders={searchFolders} folderResults={folderResults} resetSearch={resetSearch}/>}/>
+      <Route path='/dashboard/:id' element={<UserCases/>}/>
     </Routes>
     </div>
   );

@@ -11,6 +11,7 @@ const Dashboard = ({ createNewUser, users, searchFolders, folderResults, resetSe
         key={user.id}
         id={user.id}
         fileName={user.fileName}
+        cases={user.cases}
       />
     )
   })
@@ -21,6 +22,7 @@ const Dashboard = ({ createNewUser, users, searchFolders, folderResults, resetSe
         key={user.id}
         id={user.id}
         fileName={user.fileName}
+        cases={user.cases}
       />
     )
   })
