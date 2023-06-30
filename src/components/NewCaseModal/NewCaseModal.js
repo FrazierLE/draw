@@ -67,7 +67,7 @@ const NewCaseModal = () => {
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h5" component="h2">
-              New User
+              New Case
             </Typography>
             <TextField
             id="input-with-icon-attorney"
