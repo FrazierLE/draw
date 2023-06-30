@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
-import {Box, Modal, Fade, Button, Typography, Backdrop, TextField, InputAdornment} from '@mui/material';
+import React, { useState } from 'react'
+import { Backdrop, Button, Modal, Fade, Box, Typography, TextField, InputAdornment } from '@mui/material';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import AddIcon from '@mui/icons-material/Add';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import UploadIcon from '@mui/icons-material/Upload';
+import CreateIcon from '@mui/icons-material/Create';
 
 const style = {
   position: 'absolute',
@@ -18,26 +21,12 @@ const style = {
   flexDirection: 'column'
 };
 
-const NewFolderModal = ({ createNewUser }) => {
+const NewCaseModal = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [fileName, setfileName] = useState('')
-
-  const addNewUser = (e) => {
-    e.preventDefault()
-    const newUser = {
-      id: Date.now(),
-      fileName: fileName
-    }
-    setOpen(false)
-    createNewUser(newUser)
-    clearInput()
-  }
-
-  const clearInput = () => {
-    setfileName('')
-  }
+  const [attorney, setAttorney] = useState()
+  const [client, setClient] = useState()
 
   return (
     <div>
@@ -61,12 +50,28 @@ const NewFolderModal = ({ createNewUser }) => {
               New User
             </Typography>
             <TextField
-            id="input-with-icon-fileName"
-            label="File Name"
+            id="input-with-icon-attorney"
+            label="Attorney"
             type='text'
-            name='fileName'
-            value={fileName}
-            onChange={e => setfileName(e.target.value)}
+            name='attorney'
+            value={attorney}
+            onChange={e => setAttorney(e.target.value)}
+            sx={{margin: '10px'}}
+            InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <ContactsIcon />
+              </InputAdornment>
+            ),}}
+            variant="outlined"
+            />
+               <TextField
+            id="input-with-icon-client"
+            label="Client"
+            type='text'
+            name='client'
+            value={client}
+            onChange={e => setClient(e.target.value)}
             sx={{margin: '10px'}}
             InputProps={{
             startAdornment: (
@@ -76,7 +81,11 @@ const NewFolderModal = ({ createNewUser }) => {
             ),}}
             variant="outlined"
             />
-            <Button onClick={e => addNewUser(e)}><PersonAddAltIcon />Create</Button>
+            <Box sx={{display: 'flex', justifyContent: 'center'}}>
+              <Button>< CreateIcon/>Create DigiStrip</Button>
+              <Button>< UploadIcon />Upload DigiStrip</Button>
+            </Box>
+            <Button><PersonAddAltIcon />Create</Button>
           </Box>
         </Fade>
       </Modal>
@@ -84,4 +93,4 @@ const NewFolderModal = ({ createNewUser }) => {
   );
 }
 
-export default NewFolderModal
+export default NewCaseModal

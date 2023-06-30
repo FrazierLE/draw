@@ -3,6 +3,7 @@ import FolderIcon from '@mui/icons-material/Folder';
 import { Box, Typography } from '@mui/material';
 import { NavLink, useParams, useOutletContext } from 'react-router-dom';
 import Case from '../Case/Case';
+import NewCaseModal from '../NewCaseModal/NewCaseModal';
 
 const UserCases = () => {
   const params = useParams()
@@ -23,10 +24,11 @@ const UserCases = () => {
 
   return(
     <Box>
+      <NewCaseModal />
       <Typography variant='h3'>
         User Cases
       </Typography>
-      {list ? <div>{list}</div> : <h3>This User has no cases yet.</h3>}
+      {list ? <Box sx={{display: 'flex'}}>{list}</Box> : <Typography variant='h4'>This User has no cases yet.</Typography>}
     </Box>
   )
 }
