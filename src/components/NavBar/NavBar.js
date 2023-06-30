@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { AppBar, Box, IconButton, Toolbar, Button, Typography, MenuList, MenuItem } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
+import { NavLink, useLocation } from 'react-router-dom';
 
 
 const NavBar = () => {
   const [open, setOpen] = useState(false)
+  let location = useLocation()
 
   return(
     <Box sx={{flexGrow: 1, margin: '15px', border: '3px solid black', borderRadius: '5px', width: '90%'}}>
@@ -30,9 +32,9 @@ const NavBar = () => {
         <Box sx={{display: 'flex', justifyContent:'flex-end', border: '1px solid'}}>
           <MenuList sx={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
             <Button onClick={() => setOpen(false)} sx={{width:'5vw'}}><CloseIcon variant='contained' /></Button>
-            <MenuItem>DigiStrip</MenuItem>
-            <MenuItem>User Dashboard</MenuItem>
-            <MenuItem>Logout</MenuItem>
+            {location.pathname === '/dashboard' && <NavLink to='/digistrip' style={{textDecoration: 'none'}}><MenuItem onClick={() => setOpen(false)}>DigiStrip</MenuItem></NavLink>}
+            <NavLink to='/dashboard' style={{textDecoration: 'none'}}><MenuItem onClick={() => setOpen(false)}>User Dashboard</MenuItem></NavLink>
+            <NavLink to='/' style={{textDecoration: 'none'}}><MenuItem onClick={() => setOpen(false)}>Logout</MenuItem></NavLink>
           </MenuList>
         </Box>
         }
