@@ -6,13 +6,18 @@ import Login from '../Login/Login';
 import SavedSection from '../SavedSection/SavedSection';
 import Dashboard from '../Dashboard/Dashboard';
 import { Route, Routes } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Outlet } from 'react-router-dom';
 import UserCases from '../UserCases/UserCases';
 
 
 function App() {
   let location = useLocation()
-  const [users, setUsers] = useState([{id: 1, fileName: 'user643', cases: [{id: 1, attorney: 'Samantha Poon', client: 'Hannah Burgstein', digistrip: ''}]}])
+  const [users, setUsers] = useState([{
+    id: 1, 
+    fileName: 'user643',
+    cases: [{id: 1, attorney: 'Samantha Poon', client: 'Hannah Burgstein', digistrip: ''}, 
+      {id: 2, attorney: 'Samantha Poon', client: 'Courtney Heller', digistrip: ''}
+  ]}])
   const [folderResults, setFolderResults] = useState([])
 
   const createNewUser = (newUser) => {
@@ -43,8 +48,11 @@ function App() {
         <Draw />
         {/* <SavedSection /> */}
       </div>}/>
-      <Route path='/dashboard' element={<Dashboard createNewUser={createNewUser} users={users} searchFolders={searchFolders} folderResults={folderResults} resetSearch={resetSearch}/>}/>
-      <Route path='/dashboard/:id' element={<UserCases/>}/>
+      <Route path='/dashboard' element={<Outlet context={users}/>}>
+        <Route index element={<Dashboard createNewUser={createNewUser} users={users} searchFolders={searchFolders} folderResults={folderResults} resetSearch={resetSearch}/>}/>
+        {/* <Route path='/dashboard' element={<Dashboard createNewUser={createNewUser} users={users} searchFolders={searchFolders} folderResults={folderResults} resetSearch={resetSearch}/>}/> */}
+        <Route path='/dashboard/:id' element={<UserCases />}/>
+      </Route>
     </Routes>
     </div>
   );
